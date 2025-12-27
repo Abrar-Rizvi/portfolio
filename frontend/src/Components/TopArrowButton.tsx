@@ -40,7 +40,7 @@ export const ScrollToTop = () => {
         <button
           onClick={scrollToTop}
           suppressHydrationWarning
-          className="fixed bottom-15 right-15 z-50 p-3 bg-sky-500 text-white rounded-full shadow-lg hover:bg-sky-600 hover:shadow-xl hover:scale-110 focus:outline-none cursor-pointer focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 transition-all duration-300 animate-fade-in"
+          className="fixed bottom-6 right-6 z-50 p-3 bg-sky-500 text-white rounded-full shadow-lg hover:bg-sky-600 hover:shadow-xl hover:scale-110 focus:outline-none cursor-pointer focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 transition-all duration-300 animate-fade-in"
           aria-label="Scroll to top"
         >
           <ArrowUp size={24} strokeWidth={2.5} />

@@ -41,7 +41,7 @@ export default function ChatWidget() {
   }, []);
   
   // Configure your FastAPI endpoint here
-  const API_ENDPOINT = 'http://localhost:8000/api/chat'; // Change this to your actual endpoint
+  const API_ENDPOINT = 'http://localhost:5000/api/chat'; // Change this to your actual endpoint
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/Components/Navigation";
 import {Footer} from "@/Components/Footer";
 import {ScrollToTop} from "@/Components/TopArrowButton";
+import ChatWidget from "@/Components/Widget";
 
 
 const inter = Inter({
@@ -30,7 +31,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <ScrollToTop />
-        
+        <ChatWidget />
       </body>
     </html>
   );

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://m-abrar-portfolio.vercel.app/
+
+# Sitemaps
+Sitemap: https://m-abrar-portfolio.vercel.app/sitemap.xml

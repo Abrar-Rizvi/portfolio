@@ -1,13 +1,13 @@
 export const projects = [
   {
     id: 1,
-    title: "Restaurant Website",
+    title: "Spec-Driven RAG System for Physical AI & Humanoid Robotics",
     description:
-      "A modern restaurant landing page with menu highlights and smooth animations. This project showcases a responsive design, with a focus on user experience and a clean, modern aesthetic. The menu is dynamically generated, and the gallery features high-quality images of the restaurant's dishes.",
-    image: "/images/cards/resturant.jpg",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
-    link: "#",
-    live: "https://restaurant-rizvi.netlify.app/",
+      "A production-grade Retrieval-Augmented Generation (RAG) system built entirely with Claude Code CLI 🤖 This project combines a Docusaurus-based educational book on Physical AI and Humanoid Robotics with an intelligent chatbot powered by advanced vector search. The system ingests and embeds all book content using Cohere Embeddings, stores vectors in Qdrant for high-performance retrieval, and generates context-aware responses through FastAPI endpoints. The architecture showcases modern AI engineering practices including spec-driven development, modular content design, LLM integration, API orchestration, and sophisticated prompt engineering. This project demonstrates how AI-assisted development can accelerate the creation of complex, scalable systems while maintaining production-ready code quality.",
+    image: "/images/cards/rag.png",
+    tech: ["Docusaurus", "Python", "FastAPI"],
+    link: "",
+    live: "https://physical-ai-humanoid-robotics-book-lime.vercel.app/",
   },
   {
     id: 2,
@@ -68,5 +68,15 @@ export const projects = [
     tech: ["React", "TypeScript", "Shadcn UI"],
     link: "#",
     live: "#",
+  },
+  {
+    id: 8,
+    title: "Restaurant Website",
+    description:
+      "A modern restaurant landing page with menu highlights and smooth animations. This project showcases a responsive design, with a focus on user experience and a clean, modern aesthetic. The menu is dynamically generated, and the gallery features high-quality images of the restaurant's dishes.",
+    image: "/images/cards/resturant.jpg",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    link: "#",
+    live: "https://restaurant-rizvi.netlify.app/",
   },
 ];

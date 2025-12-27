@@ -71,7 +71,10 @@ export default function Header() {
               </Link>
             ))}
           </div>
-           <Download_Resume />
+           {/* Resume button - only visible on desktop */}
+           <div className="hidden md:block">
+             <Download_Resume />
+           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
@@ -89,7 +92,7 @@ export default function Header() {
       {/* Mobile Dropdown Menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? "max-h-48" : "max-h-0"
+          isMobileMenuOpen ? "max-h-96" : "max-h-0"
         }`}
       >
         <div className="px-4 py-2 space-y-1 bg-slate-700 bg-opacity-95">
@@ -103,8 +106,12 @@ export default function Header() {
               {link.name}
             </Link>
           ))}
+          {/* Resume button - full width in mobile menu */}
+          <div className="pt-2 pb-2" onClick={() => setIsMobileMenuOpen(false)}>
+            <Download_Resume isMobile={true} />
+          </div>
         </div>
-       
+
       </div>
       
     </nav>

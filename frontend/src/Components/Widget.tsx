@@ -152,7 +152,7 @@ export default function ChatWidget() {
     <div className="fixed bottom-6 left-6 z-50">
       {/* Chat Window */}
       <div
-        className={`absolute bottom-24 left-0 w-96 h-[300px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden transition-all duration-500 ease-out transform ${
+        className={`fixed inset-0 md:inset-auto md:bottom-0 md:left-6 w-full md:w-80 h-full md:h-[500px] bg-white md:rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden transition-all duration-500 ease-out transform ${
           isOpen
             ? 'opacity-100 scale-100 translate-y-0'
             : 'opacity-0 scale-95 translate-y-4 pointer-events-none'
@@ -311,26 +311,22 @@ export default function ChatWidget() {
         </div>
       </div>
 
-      {/* Chat Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 bg-linear-to-r from-sky-500 to-blue-600 text-white rounded-full shadow-2xl hover:shadow-sky-300 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center relative group"
-      >
-        <div className="absolute inset-0 bg-linear-to-r from-sky-400 to-blue-500 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse"></div>
-        
-        {isOpen ? (
-          <X size={28} className="relative z-10" />
-        ) : (
-          <>
-            <MessageCircle size={28} className="relative z-10" />
-            {unreadCount > 0 && (
-              <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center animate-bounce shadow-lg">
-                {unreadCount}
-              </div>
-            )}
-          </>
-        )}
-      </button>
+      {/* Chat Button - Only visible when chat is closed */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="w-16 h-16 bg-linear-to-r from-sky-500 to-blue-600 text-white rounded-full shadow-2xl hover:shadow-sky-300 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center relative group"
+        >
+          <div className="absolute inset-0 bg-linear-to-r from-sky-400 to-blue-500 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity animate-pulse"></div>
+
+          <MessageCircle size={28} className="relative z-10" />
+          {unreadCount > 0 && (
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center animate-bounce shadow-lg">
+              {unreadCount}
+            </div>
+          )}
+        </button>
+      )}
 
       <style jsx>{`
         @keyframes slideIn {

@@ -15,9 +15,9 @@ const Download_Resume: React.FC<DownloadResumeProps> = ({ isMobile = false }) =>
     link.href = '/Muhammad_Abrar.pdf';
 
     // Set the download attribute with desired filename
-    link.download = 'Muhammad_Abrar.pdf';
+    link.download = 'Muhammad_Abrar_word.pdf';
 
-    // Append to body, click, and remove
+    // Append to body, click, and remove.
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

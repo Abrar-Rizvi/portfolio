@@ -12,7 +12,7 @@ const Download_Resume: React.FC<DownloadResumeProps> = ({ isMobile = false }) =>
 
     // Set the path to your resume file
     // Make sure to place your resume.pdf in the public folder
-    link.href = '/Muhammad_Abrar.pdf';
+    link.href = '/Muhammad_Abrar_word.pdf';
 
     // Set the download attribute with desired filename
     link.download = 'Muhammad_Abrar_word.pdf';

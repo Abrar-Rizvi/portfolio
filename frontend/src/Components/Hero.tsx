@@ -1,180 +1,188 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
-import dynamic from "next/dynamic";
-const Typewriter = dynamic(() => import("./Typewriter"), { ssr: false });
+function CopperBlock() {
+  return (
+    <div style={{ width: 8, height: 14, background: '#B87333', flexShrink: 0 }} />
+  );
+}
 
 export default function Hero() {
-  const [hasAnimated, setHasAnimated] = useState(false);
-  // const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHasAnimated(true);
-    }, 0);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Scroll function only runs on client side
-  const scrollToNext = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  
-
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        background: "linear-gradient(to bottom, #ffffff, #f8fafc)",
-      }}
-    >
-      {/* Floating Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-20 left-10 w-32 h-32 bg-sky-200 rounded-full opacity-20 blur-3xl animate-float"
-          style={{ animationDelay: "0s" }}
-        ></div>
-        <div
-          className="absolute top-40 right-20 w-48 h-48 bg-blue-200 rounded-full opacity-20 blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute bottom-32 left-1/4 w-40 h-40 bg-slate-200 rounded-full opacity-20 blur-3xl animate-float"
-          style={{ animationDelay: "4s" }}
-        ></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <div className="lg:col-span-3 text-center lg:text-left">
-            <h1
-              className={`font-bold text-4xl md:text-5xl lg:text-6xl mb-4 transition-all duration-700 ${
-                hasAnimated
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{
-                background: "linear-gradient(135deg, #334155 0%, #2563eb 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                transitionDelay: "0.6s",
-              }}
-            >
-              Muhammad Abrar
-            </h1>
-
-            <h2
-              className={`text-xl md:text-2xl lg:text-3xl font-semibold text-slate-600 mb-6 transition-all duration-700 ${
-                hasAnimated
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: "0.8s" }}
-            >
-              {/* Full Stack AI Developer | Nextjs & React Specialist */}
-              <Typewriter
-              />
-            </h2>
-
-            <p
-              className={`text-base md:text-lg text-slate-500 mb-8 max-w-2xl mx-auto lg:mx-0 transition-all duration-700 ${
-                hasAnimated ? "opacity-100" : "opacity-0"
-              }`}
-              style={{ transitionDelay: "1s" }}
-            >
-              Crafting intelligent web applications with modern tech. Passionate
-              about AI, clean code, and building products that matter.
-            </p>
-
-            <div
-              className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start transition-all duration-700 ${
-                hasAnimated ? "opacity-100" : "opacity-0"
-              }`}
-              style={{ transitionDelay: "1.2s" }}
-            >
-              <a
-                href="https://www.linkedin.com/in/abrar-rizvi/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 hover:scale-105 hover:shadow-lg transition-all duration-200 text-center"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/Abrar-Rizvi?tab=repositories"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 border-2 border-sky-500 text-sky-600 font-semibold rounded-lg hover:bg-sky-50 hover:scale-105 hover:shadow-lg transition-all duration-200 text-center"
-              >
-                Github
-              </a>
-            </div>
-          </div>
-
-          {/* Right Column - Video */}
-          <div className="lg:col-span-2 flex justify-center lg:justify-end">
-            <div
-              className={`relative transition-all duration-700 ${
-                hasAnimated ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
-              style={{ transitionDelay: "1.4s" }}
-            >
-              {/* Glow Effect Behind Video */}
-              <div className="absolute inset-0 bg-linear-to-r from-sky-400 to-blue-500 rounded-3xl blur-3xl opacity-30 animate-pulse"></div>
-
-              {/* Video Container */}
-              <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-[450px] lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-sky-200 animate-float">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/video/hero.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-
-                <div className="absolute inset-0 bg-linear-to-t from-slate-900/20 to-transparent pointer-events-none"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button
-        onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-slate-400 hover:text-slate-600 transition-colors animate-bounce cursor-pointer"
-        aria-label="Scroll down"
-      >
-        <ChevronDown size={32} />
-      </button>
-
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
+    <>
+      <style>{`
+        .hero-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-family: 'Space Mono', monospace;
+          font-size: 0.8rem;
+          letter-spacing: 0.10em;
+          color: #B87333;
+          transition: color 150ms ease;
+          text-decoration: none;
         }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
+        .hero-cta:hover { color: #C8924A; }
+        .hero-cta .arr { display: inline-block; transition: transform 180ms ease-out; }
+        .hero-cta:hover .arr { transform: translateX(5px); }
+        .hero-cta-muted {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-family: 'Space Mono', monospace;
+          font-size: 0.68rem;
+          letter-spacing: 0.08em;
+          color: rgba(244,235,208,0.35);
+          transition: color 150ms ease;
+          text-decoration: none;
+        }
+        .hero-cta-muted:hover { color: rgba(244,235,208,0.65); }
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 7fr 5fr;
+          gap: 48px;
+          align-items: start;
+        }
+        @media (max-width: 1023px) {
+          .hero-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 767px) {
+          #home { padding: 40px 24px 60px !important; }
         }
       `}</style>
-    </section>
+
+      <section
+        id="home"
+        style={{
+          position: 'relative',
+          minHeight: 'calc(100vh - 64px)',
+          background: '#111111',
+          padding: '56px 48px 80px',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Ghost watermark */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            right: '-40px',
+            top: '50%',
+            transform: 'translateY(-58%)',
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontWeight: 300,
+            fontSize: 'clamp(180px, 22vw, 320px)',
+            lineHeight: 1,
+            color: 'rgba(244,235,208,0.03)',
+            userSelect: 'none',
+            pointerEvents: 'none',
+            letterSpacing: '-0.04em',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          ABRAR
+        </div>
+
+        <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
+          <div className="hero-grid">
+
+            {/* Text column */}
+            <div>
+              {/* Pre-label */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                <CopperBlock />
+                <span style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: '0.70rem',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase' as const,
+                  color: 'rgba(244,235,208,0.55)',
+                }}>
+                  AI Systems Engineer
+                </span>
+              </div>
+
+              {/* Headline */}
+              <h1 style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontWeight: 300,
+                fontSize: 'clamp(54px, 7.5vw, 108px)',
+                lineHeight: 0.92,
+                letterSpacing: '-0.02em',
+                color: '#F4EBD0',
+                margin: '0 0 14px',
+              }}>
+                I build the<br />
+                systems that<br />
+                make <span style={{ color: '#B87333' }}>agents</span><br />
+                rel<span style={{ color: '#B87333' }}>i</span>able.
+              </h1>
+
+              {/* Name */}
+              <div style={{ marginBottom: '14px' }}>
+                <p style={{
+                  fontFamily: "'Lora', Georgia, serif",
+                  fontWeight: 500,
+                  fontSize: '1.05rem',
+                  color: 'rgba(244,235,208,0.80)',
+                  margin: 0,
+                }}>
+                  Muhammad Abrar
+                </p>
+              </div>
+
+              {/* Rule */}
+              <div style={{
+                height: '1px',
+                background: 'rgba(244,235,208,0.10)',
+                marginBottom: '14px',
+                maxWidth: '560px',
+              }} />
+
+              {/* Bio */}
+              <p style={{
+                fontFamily: "'Lora', Georgia, serif",
+                fontSize: '1.05rem',
+                lineHeight: 1.75,
+                color: 'rgba(244,235,208,0.60)',
+                maxWidth: '56ch',
+                margin: '0 0 24px',
+              }}>
+                I design and ship agentic AI systems, RAG pipelines, and automation
+                workflows. Two years of remote work building AI infrastructure with
+                software teams taught me that most agents fail from poor architecture,
+                not poor models.
+              </p>
+
+              {/* CTAs */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+                <a href="#work" className="hero-cta">
+                  See My Work <span className="arr">→</span>
+                </a>
+                <a href="#contact" className="hero-cta-muted">
+                  or get in touch ↓
+                </a>
+              </div>
+            </div>
+
+            {/* Right column — intentional negative space (ghost text provides visual mass) */}
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div style={{
+          position: 'absolute',
+          bottom: '28px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          fontFamily: "'Space Mono', monospace",
+          fontSize: '0.62rem',
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase' as const,
+          color: 'rgba(244,235,208,0.30)',
+          userSelect: 'none' as const,
+          whiteSpace: 'nowrap',
+        }}>
+          ↓ scroll
+        </div>
+      </section>
+    </>
   );
 }

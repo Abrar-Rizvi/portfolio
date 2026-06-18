@@ -1,24 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap');
+
 @import "tailwindcss";
 
+/* =========================
+   DESIGN TOKENS — Copper / Ivory
+========================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-primary:    #111111;
+  --bg-secondary:  #1A1A1A;
+  --bg-glass:      rgba(244,235,208,0.03);
+  --bg-glass-hover: rgba(244,235,208,0.06);
+
+  /* Borders */
+  --border-glass:        rgba(244,235,208,0.10);
+  --border-glass-strong: rgba(244,235,208,0.20);
+
+  /* Copper */
+  --copper:       #B87333;
+  --copper-hov:   #C8924A;
+  --copper-ghost: rgba(184,115,51,0.04);
+
+  /* Ivory + opacity steps */
+  --ivory:     #F4EBD0;
+  --ivory-90:  rgba(244,235,208,0.90);
+  --ivory-80:  rgba(244,235,208,0.80);
+  --ivory-75:  rgba(244,235,208,0.75);
+  --ivory-65:  rgba(244,235,208,0.65);
+  --ivory-60:  rgba(244,235,208,0.60);
+  --ivory-55:  rgba(244,235,208,0.55);
+  --ivory-50:  rgba(244,235,208,0.50);
+  --ivory-45:  rgba(244,235,208,0.45);
+  --ivory-40:  rgba(244,235,208,0.40);
+  --ivory-35:  rgba(244,235,208,0.35);
+  --ivory-30:  rgba(244,235,208,0.30);
+  --ivory-20:  rgba(244,235,208,0.20);
+  --ivory-10:  rgba(244,235,208,0.10);
+  --ivory-08:  rgba(244,235,208,0.08);
+  --ivory-06:  rgba(244,235,208,0.06);
+  --ivory-03:  rgba(244,235,208,0.03);
+
+  /* Accent aliases for backward-compatible component usage */
+  --accent-primary:   #B87333;
+  --accent-secondary: #C8924A;
+  --accent-glow:      rgba(184,115,51,0.15);
+
+  /* Text aliases */
+  --text-primary:   #F4EBD0;
+  --text-secondary: rgba(244,235,208,0.60);
+  --text-muted:     rgba(244,235,208,0.30);
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Lora', Georgia, serif;
+  --font-mono:    'Space Mono', 'Courier New', monospace;
 }
+
+/* =========================
+   TAILWIND THEME MAPPING
+========================= */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --color-bg-primary:          var(--bg-primary);
+  --color-bg-secondary:        var(--bg-secondary);
+  --color-glass:               var(--bg-glass);
+  --color-glass-hover:         var(--bg-glass-hover);
+  --color-border-glass:        var(--border-glass);
+  --color-border-glass-strong: var(--border-glass-strong);
+  --color-primary:             var(--accent-primary);
+  --color-secondary:           var(--accent-secondary);
+  --color-text-primary:        var(--text-primary);
+  --color-text-secondary:      var(--text-secondary);
+  --color-text-muted:          var(--text-muted);
+  --font-display:              var(--font-display);
+  --font-body:                 var(--font-body);
+  --font-mono:                 var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================
+   GLOBALS
+========================= */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* =========================
+   TYPOGRAPHY UTILITIES
+========================= */
+
+.hero-title {
+  font: 300 clamp(2rem, 6vw, 5rem) / 0.95 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  font: 400 clamp(1rem, 3vw, 2rem) / 1.1 var(--font-display);
+}
+
+.body-text {
+  font: 400 1.1rem / 1.8 var(--font-body);
+}
+
+.label-mono {
+  font: 400 0.75rem / 1 var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* =========================
+   SURFACE CARD
+   (replaces glass-card — flat, no backdrop-filter)
+========================= */
+
+.glass-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: 4px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-glass-strong);
+}
+
+/* =========================
+   NAV LINKS
+========================= */
+
+.nav-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.10em;
+  color: rgba(244,235,208,0.55);
+  transition: color 150ms ease;
+  text-decoration: none;
+}
+.nav-link:hover { color: #F4EBD0; }
+
+.nav-resume {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: #B87333;
+  transition: color 150ms ease;
+  text-decoration: none;
+}
+.nav-resume:hover { color: #C8924A; }
+
+/* =========================
+   FOOTER LINKS
+========================= */
+
+.footer-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(244,235,208,0.30);
+  transition: color 150ms ease;
+  text-decoration: none;
+}
+.footer-link:hover { color: #B87333; }
+
+/* =========================
+   ANIMATIONS
+   (kept for components not yet migrated)
+========================= */
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(30px, -30px) scale(1.05); }
+}
+
+@keyframes mouseDotBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+@keyframes availableDotBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes slowZigzag {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(10px, -8px); }
+  50%  { transform: translate(0, -5px); }
+  75%  { transform: translate(-10px, -8px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* =========================
+   STACK / MY STACK SECTION
+========================= */
+
+.stack-section {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.stack-title {
+  font: 400 clamp(1rem, 3vw, 2rem) / 1.1 var(--font-display);
+  text-align: center;
+  margin-bottom: 80px;
+  color: var(--text-primary);
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary), transparent);
+}
+
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 32px;
+  padding: 20px 0;
+  animation: marquee 30s linear infinite;
+  flex-shrink: 0;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.tech-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 160px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tech-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-glass-strong);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 32px var(--accent-glow);
+  transform: translateY(-8px);
+}
+
+.tech-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tech-logo.dark-logo {
+  filter: brightness(0) invert(1);
+}
+
+.tech-card:hover .tech-logo {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 12px var(--accent-glow));
+}
+
+.tech-name {
+  font: 500 0.95rem var(--font-mono);
+  color: var(--text-secondary);
+  text-align: center;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.tech-card:hover .tech-name {
+  color: var(--text-primary);
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .stack-section { padding: 80px 0; }
+  .stack-title   { margin-bottom: 50px; }
+  .tech-card     { padding: 24px 20px; min-width: 130px; }
+  .tech-logo     { width: 48px; height: 48px; }
+  .tech-name     { font-size: 0.8rem; }
 }
